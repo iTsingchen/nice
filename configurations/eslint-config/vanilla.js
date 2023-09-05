@@ -1,6 +1,6 @@
-const { resolve } = require("node:path");
+const { findTsConfigs } = require('./utils');
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const project = findTsConfigs(process.cwd());
 
 /*
  * This is a custom ESLint configuration for use with
@@ -13,22 +13,18 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 module.exports = {
   extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
+    '@vercel/style-guide/eslint/node',
+    '@vercel/style-guide/eslint/typescript',
   ].map(require.resolve),
   parserOptions: {
     project,
   },
-  globals: {
-    React: true,
-    JSX: true,
-  },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       typescript: {
         project,
       },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/"],
+  ignorePatterns: ['node_modules/', 'dist/'],
 };

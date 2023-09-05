@@ -3,18 +3,19 @@
   "display": "Next.js",
   "extends": "./base.json",
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "plugins": [{ "name": "next" }],
-    "allowJs": true,
+
+    /* Bundler mode */
     "declaration": false,
     "declarationMap": false,
     "incremental": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "noEmit": true,
     "resolveJsonModule": true,
-    "strict": false,
-    "target": "es5"
+
+    /* Linting */
+    "allowJs": true
   },
   "include": ["src", "next-env.d.ts"],
   "exclude": ["node_modules"]

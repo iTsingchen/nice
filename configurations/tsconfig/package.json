@@ -1,8 +1,11 @@
 {
-  "name": "tsconfig",
+  "name": "@nice/tsconfig",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "devDependencies": {
+    "@vercel/style-guide": "^5.0.1"
+  },
   "publishConfig": {
     "access": "public"
   }

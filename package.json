@@ -1,17 +1,18 @@
 {
+  "name": "nice",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint"
   },
+  "prettier": "./configurations/eslint-config/node_modules/@vercel/style-guide/prettier",
   "devDependencies": {
+    "@nice/tsconfig": "workspace:*",
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
-    "tsconfig": "workspace:*",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10",
-  "name": "nice"
+  "packageManager": "pnpm@8.6.10"
 }
