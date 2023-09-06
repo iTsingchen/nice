@@ -11,6 +11,21 @@
   "commitlint": {
     "extends": "@commitlint/config-conventional"
   },
+  "lint-staged": {
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.{js,mjs,ts,tsx}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.css": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
@@ -26,6 +41,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.48.0",
     "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "turbo": "latest"
   },
