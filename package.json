@@ -5,12 +5,43 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "prepare": "husky install"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.{js,mjs,ts,tsx}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.css": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "prettier": "./configurations/eslint-config/node_modules/@vercel/style-guide/prettier",
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/cz-commitlint": "^17.7.1",
     "@nice/tsconfig": "workspace:*",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.48.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "turbo": "latest"
   },
