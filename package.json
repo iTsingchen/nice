@@ -6,7 +6,8 @@
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "turbo run test"
   },
   "commitlint": {
     "extends": "@commitlint/config-conventional"
