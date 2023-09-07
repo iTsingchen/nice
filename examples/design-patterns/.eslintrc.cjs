@@ -6,7 +6,7 @@ module.exports = {
   rules: {},
   overrides: [
     {
-      files: ['vite.config.ts'],
+      files: ['vite.config.ts', 'uno.config.ts'],
       rules: {
         'import/no-default-export': 'off',
       },
