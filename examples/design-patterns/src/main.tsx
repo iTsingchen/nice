@@ -1,3 +1,7 @@
+import '@unocss/reset/normalize.css';
+import 'uno.css';
+import 'virtual:unocss-devtools';
+
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app.tsx';
