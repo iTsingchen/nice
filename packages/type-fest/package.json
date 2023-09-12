@@ -1,0 +1,24 @@
+{
+  "name": "@nice/type-fest",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build && tsc",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "vitest typecheck"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@nice/eslint-config": "workspace:*",
+    "@nice/tsconfig": "workspace:*",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.3"
+  }
+}

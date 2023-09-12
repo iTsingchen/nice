@@ -5,7 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@vercel/style-guide": "^5.0.1",
-    "eslint-config-turbo": "^1.10.12",
+    "eslint-config-turbo": "^1.10.13",
     "eslint-plugin-react-refresh": "^0.4.3"
   }
 }

@@ -19,9 +19,11 @@
   "devDependencies": {
     "@nice/eslint-config": "workspace:*",
     "@nice/tsconfig": "workspace:*",
+    "@nice/type-fest": "workspace:*",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitest/coverage-v8": "^0.34.4",
     "typescript": "^5.2.2",
     "unocss": "^0.55.7",
     "vite": "^4.4.9",

@@ -7,7 +7,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "prepare": "husky install",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
   },
   "commitlint": {
     "extends": "@commitlint/config-conventional"
@@ -46,5 +47,5 @@
     "prettier": "^3.0.3",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10"
+  "packageManager": "pnpm@8.7.5"
 }
