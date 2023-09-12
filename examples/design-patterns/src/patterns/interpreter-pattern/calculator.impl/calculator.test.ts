@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { CalculatorImpl } from './calculator.impl';
+import { CalculatorImpl } from './calculator';
 
 test('+', () => {
   const calculator = new CalculatorImpl();
@@ -9,6 +9,7 @@ test('+', () => {
   expect(calculator.calc('1 + 2')).toBe(3);
   expect(calculator.calc(' 1+2')).toBe(3);
   expect(calculator.calc('1+2 ')).toBe(3);
+  expect(calculator.calc('1+(-1)')).toBe(0);
 });
 
 test('-', () => {
@@ -31,14 +32,14 @@ test('*', () => {
   expect(calculator.calc('1*2 ')).toBe(2);
 });
 
-test('÷', () => {
+test('/', () => {
   const calculator = new CalculatorImpl();
 
-  expect(calculator.calc('1÷2')).toBe(0.5);
-  expect(calculator.calc('1÷2÷3')).toBe(0.16666666666666666);
-  expect(calculator.calc('1 ÷ 2')).toBe(0.5);
-  expect(calculator.calc(' 1÷2')).toBe(0.5);
-  expect(calculator.calc('1÷2 ')).toBe(0.5);
+  expect(calculator.calc('1/2')).toBe(0.5);
+  expect(calculator.calc('1/2/3')).toBe(0.16666666666666666);
+  expect(calculator.calc('1 / 2')).toBe(0.5);
+  expect(calculator.calc(' 1/2')).toBe(0.5);
+  expect(calculator.calc('1/2 ')).toBe(0.5);
 
-  expect(calculator.calc('1÷0')).toBe(Infinity);
+  expect(calculator.calc('1/0')).toBe(Infinity);
 });
