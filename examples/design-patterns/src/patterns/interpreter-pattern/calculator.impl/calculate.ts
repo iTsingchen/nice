@@ -10,30 +10,15 @@ export const calculate = (
   for (const token of suffixExpr) {
     const consumeExprCount = exprFactory.getConsumeExprCount(token);
 
-    switch (consumeExprCount) {
-      case 0:
-        exprStack.push(exprFactory.create(token));
-        break;
-      case 1: {
-        const expr = exprStack.pop();
-        if (!expr) {
-          throw new Error('Invalid expression');
-        }
-        exprStack.push(exprFactory.create(token, expr));
-        break;
-      }
-      case 2: {
-        const expr1 = exprStack.pop();
-        const expr2 = exprStack.pop();
-        if (!expr1 || !expr2) {
-          throw new Error('Invalid expression');
-        }
-        exprStack.push(exprFactory.create(token, expr2, expr1));
-        break;
-      }
-      default:
-        throw new Error('The program will not be executed here.');
+    const args = Array.from({ length: consumeExprCount })
+      .map(() => exprStack.pop()) // WARNING: 该行具有副作用，不是纯函数
+      .reverse();
+
+    if (args.some((expr) => !expr)) {
+      throw new Error('Invalid expression');
     }
+
+    exprStack.push(exprFactory.create(token, ...(args as Expression[])));
   }
 
   if (exprStack.length !== 1) {
