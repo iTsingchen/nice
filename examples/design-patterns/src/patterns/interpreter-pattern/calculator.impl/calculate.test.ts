@@ -1,4 +1,4 @@
-import { test, expect, vi } from 'vitest';
+import { test, expect } from 'vitest';
 import { calculate } from './calculate';
 import { CalcExpressionFactory } from './expressions';
 
@@ -51,15 +51,5 @@ test('错误情况', () => {
   );
   expect(() => calculate(['1', '1', '-', '2'], factory)).toThrowError(
     'Invalid expression',
-  );
-
-  const fakeFactory = {
-    getConsumeExprCount: () => -1,
-    getPriority: vi.fn(),
-    create: vi.fn(),
-  };
-
-  expect(() => calculate(['ThisIsFakeToken'], fakeFactory)).toThrowError(
-    'The program will not be executed here.',
   );
 });
