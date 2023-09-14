@@ -33,7 +33,20 @@ test('三角函数', () => {
 });
 
 test('含有正负号', () => {
-  expect(text2token('-1')).toEqual(['-1']);
-  expect(text2token('-1+2')).toEqual(['-1', '+', '2']);
-  expect(text2token('-1+(-2)')).toEqual(['-1', '+', '(', '-2', ')']);
+  expect(text2token('-1')).toEqual(['0', '-', '1']);
+  expect(text2token('-1+2')).toEqual(['0', '-', '1', '+', '2']);
+  expect(text2token('-1+(-2)')).toEqual([
+    '0',
+    '-',
+    '1',
+    '+',
+    '(',
+    '0',
+    '-',
+    '2',
+    ')',
+  ]);
+
+  expect(text2token('+1')).toEqual(['0', '+', '1']);
+  expect(text2token('1+(+2)')).toEqual(['1', '+', '(', '0', '+', '2', ')']);
 });

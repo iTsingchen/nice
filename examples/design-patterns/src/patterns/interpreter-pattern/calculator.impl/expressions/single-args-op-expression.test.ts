@@ -18,7 +18,7 @@ test('SinOpExpression', () => {
   const testFn = (num: number): void => {
     const n = new NumberExpression(num.toString());
     const expected = Math.sin((num / 180) * Math.PI);
-    expect(new SinOpExpression(n).interpreter()).toBe(expected);
+    expect(new SinOpExpression(n).interpreter()).toBeCloseTo(expected);
   };
 
   testFn(0);
@@ -31,7 +31,7 @@ test('CosOpExpression', () => {
   const testFn = (num: number): void => {
     const n = new NumberExpression(num.toString());
     const expected = Math.cos((num / 180) * Math.PI);
-    expect(new CosOpExpression(n).interpreter()).toBe(expected);
+    expect(new CosOpExpression(n).interpreter()).toBeCloseTo(expected);
   };
 
   testFn(0);
@@ -44,7 +44,7 @@ test('TanOpExpression', () => {
   const testFn = (num: number): void => {
     const n = new NumberExpression(num.toString());
     const expected = Math.tan((num / 180) * Math.PI);
-    expect(new TanOpExpression(n).interpreter()).toBe(expected);
+    expect(new TanOpExpression(n).interpreter()).toBeCloseTo(expected);
   };
 
   testFn(0);
