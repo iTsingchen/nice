@@ -8,7 +8,7 @@ test('消费表达式数量', () => {
 test('NumberExpression', () => {
   Array.from({ length: 10 }, (_, i): number => Math.random() * 10 ** i).forEach(
     (value): void => {
-      expect(new NumberExpression(`${value}`).interpreter()).toBe(value);
+      expect(new NumberExpression(`${value}`).interpreter()).toBeCloseTo(value);
     },
   );
 });

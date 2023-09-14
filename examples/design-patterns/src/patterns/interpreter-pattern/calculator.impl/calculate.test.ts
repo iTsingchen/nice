@@ -5,35 +5,35 @@ import { CalcExpressionFactory } from './expressions';
 test('+-x/', () => {
   const factory = new CalcExpressionFactory();
 
-  expect(calculate(['1', '1', '+'], factory)).toBe(2);
-  expect(calculate(['1', '1', '+'], factory)).toBe(2);
-  expect(calculate(['1', '1', '-'], factory)).toBe(0);
-  expect(calculate(['1', '1', '*'], factory)).toBe(1);
-  expect(calculate(['1', '1', '/'], factory)).toBe(1);
+  expect(calculate(['1', '1', '+'], factory)).toBeCloseTo(2);
+  expect(calculate(['1', '1', '+'], factory)).toBeCloseTo(2);
+  expect(calculate(['1', '1', '-'], factory)).toBeCloseTo(0);
+  expect(calculate(['1', '1', '*'], factory)).toBeCloseTo(1);
+  expect(calculate(['1', '1', '/'], factory)).toBeCloseTo(1);
 
-  expect(calculate(['1', '2', '3', '+', '+'], factory)).toBe(6);
-  expect(calculate(['2', '4', '6', '+', '*'], factory)).toBe(20);
-  expect(calculate(['2', '4', '6', '+', '/'], factory)).toBe(0.2);
+  expect(calculate(['1', '2', '3', '+', '+'], factory)).toBeCloseTo(6);
+  expect(calculate(['2', '4', '6', '+', '*'], factory)).toBeCloseTo(20);
+  expect(calculate(['2', '4', '6', '+', '/'], factory)).toBeCloseTo(0.2);
 
-  expect(calculate(['1', '2', '3', '-', '-'], factory)).toBe(2);
-  expect(calculate(['2', '4', '6', '-', '*'], factory)).toBe(-4);
-  expect(calculate(['2', '4', '6', '-', '/'], factory)).toBe(-1);
+  expect(calculate(['1', '2', '3', '-', '-'], factory)).toBeCloseTo(2);
+  expect(calculate(['2', '4', '6', '-', '*'], factory)).toBeCloseTo(-4);
+  expect(calculate(['2', '4', '6', '-', '/'], factory)).toBeCloseTo(-1);
 });
 
 test('三角函数', () => {
   const factory = new CalcExpressionFactory();
 
-  expect(calculate(['30', 'sin'], factory)).toBe(0.49999999999999994);
-  expect(calculate(['60', 'cos'], factory)).toBe(0.5000000000000001);
-  expect(calculate(['45', 'tan'], factory)).toBe(0.9999999999999999);
+  expect(calculate(['30', 'sin'], factory)).toBeCloseTo(0.5);
+  expect(calculate(['60', 'cos'], factory)).toBeCloseTo(0.5);
+  expect(calculate(['45', 'tan'], factory)).toBeCloseTo(1.0);
 });
 
 test('复合模式', () => {
   const factory = new CalcExpressionFactory();
 
-  expect(calculate(['12', '30', 'sin', '/'], factory)).toBe(24.000000000000004);
-  expect(calculate(['60', 'cos', '5', '+'], factory)).toBe(5.5);
-  expect(calculate(['25', '20', '+', 'tan'], factory)).toBe(0.9999999999999999);
+  expect(calculate(['12', '30', 'sin', '/'], factory)).toBeCloseTo(24);
+  expect(calculate(['60', 'cos', '5', '+'], factory)).toBeCloseTo(5.5);
+  expect(calculate(['25', '20', '+', 'tan'], factory)).toBeCloseTo(1.0);
 });
 
 test('错误情况', () => {

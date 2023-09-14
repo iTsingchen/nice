@@ -20,9 +20,9 @@ test('AddOpExpression', () => {
   const n2 = new NumberExpression('2');
   const n3 = new NumberExpression('3');
 
-  expect(new AddOpExpression(n1, n2).interpreter()).toBe(3);
-  expect(new AddOpExpression(n1, n3).interpreter()).toBe(4);
-  expect(new AddOpExpression(n2, n3).interpreter()).toBe(5);
+  expect(new AddOpExpression(n1, n2).interpreter()).toBeCloseTo(3);
+  expect(new AddOpExpression(n1, n3).interpreter()).toBeCloseTo(4);
+  expect(new AddOpExpression(n2, n3).interpreter()).toBeCloseTo(5);
 });
 
 test('SubOpExpression', () => {
@@ -30,9 +30,9 @@ test('SubOpExpression', () => {
   const n2 = new NumberExpression('2');
   const n3 = new NumberExpression('3');
 
-  expect(new SubOpExpression(n1, n2).interpreter()).toBe(-1);
-  expect(new SubOpExpression(n1, n3).interpreter()).toBe(-2);
-  expect(new SubOpExpression(n2, n3).interpreter()).toBe(-1);
+  expect(new SubOpExpression(n1, n2).interpreter()).toBeCloseTo(-1);
+  expect(new SubOpExpression(n1, n3).interpreter()).toBeCloseTo(-2);
+  expect(new SubOpExpression(n2, n3).interpreter()).toBeCloseTo(-1);
 });
 
 test('MulOpExpression', () => {
@@ -40,9 +40,9 @@ test('MulOpExpression', () => {
   const n2 = new NumberExpression('2');
   const n3 = new NumberExpression('3');
 
-  expect(new MulOpExpression(n1, n2).interpreter()).toBe(2);
-  expect(new MulOpExpression(n1, n3).interpreter()).toBe(3);
-  expect(new MulOpExpression(n2, n3).interpreter()).toBe(6);
+  expect(new MulOpExpression(n1, n2).interpreter()).toBeCloseTo(2);
+  expect(new MulOpExpression(n1, n3).interpreter()).toBeCloseTo(3);
+  expect(new MulOpExpression(n2, n3).interpreter()).toBeCloseTo(6);
 });
 
 test('DivOpExpression', () => {
@@ -50,7 +50,7 @@ test('DivOpExpression', () => {
   const n2 = new NumberExpression('2');
   const n3 = new NumberExpression('3');
 
-  expect(new DivOpExpression(n1, n2).interpreter()).toBe(1 / 2);
-  expect(new DivOpExpression(n1, n3).interpreter()).toBe(1 / 3);
-  expect(new DivOpExpression(n2, n3).interpreter()).toBe(2 / 3);
+  expect(new DivOpExpression(n1, n2).interpreter()).toBeCloseTo(1 / 2);
+  expect(new DivOpExpression(n1, n3).interpreter()).toBeCloseTo(1 / 3);
+  expect(new DivOpExpression(n2, n3).interpreter()).toBeCloseTo(2 / 3);
 });

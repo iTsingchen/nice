@@ -24,14 +24,16 @@ class CharCollector {
 
 /**
  * 将一个中缀表达式字符串转为中缀表达式数组
+ *
+ * 注意：正负号与加减号相似，所以将所有的正负号前面进行补零处理
+ *
  * @param text  - 中缀表达式字符串，例：1 + 2 * (3 / 4)
  * @returns token 中缀表达式数组
  */
 export const text2token = (text: string): string[] => {
   const result: string[] = [];
 
-  const numberCollector = new CharCollector();
-  const letterCollector = new CharCollector();
+  const collector = new CharCollector();
 
   let prevNonSpaceChar: string | undefined;
 
@@ -41,7 +43,10 @@ export const text2token = (text: string): string[] => {
         break;
       case isDigit(char):
       case isDot(char):
-        numberCollector.add(char);
+        collector.add(char); // 数字都是连续的
+        break;
+      case isLetter(char):
+        collector.add(char); // 字母都是连续的
         break;
       case isNegativeSign(char):
       case isPositiveSign(char):
@@ -49,21 +54,20 @@ export const text2token = (text: string): string[] => {
          *  处理 +、- 作为正负号的情况
          *    第一种情况：-1 + 2
          *    第二种情况：1 + (-2)
+         *
+         *  使用“补零”的矫正为将正负矫正为加减
          */
         if (!prevNonSpaceChar || isOpenBracket(prevNonSpaceChar)) {
-          numberCollector.add(char);
+          result.push('0');
+          result.push(char);
         } else {
-          result.push(numberCollector.consume());
-          result.push(letterCollector.consume());
+          result.push(collector.consume());
           result.push(char);
         }
         break;
-      case isLetter(char):
-        letterCollector.add(char);
-        break;
+
       default:
-        result.push(numberCollector.consume());
-        result.push(letterCollector.consume());
+        result.push(collector.consume());
         result.push(char);
     }
 
@@ -72,8 +76,7 @@ export const text2token = (text: string): string[] => {
     }
   }
 
-  result.push(numberCollector.consume());
-  result.push(letterCollector.consume());
+  result.push(collector.consume());
 
   return result.filter((str) => str.length > 0);
 };
